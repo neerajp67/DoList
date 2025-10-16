@@ -1,0 +1,90 @@
+.snackbar-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  min-width: 300px;
+  max-width: 90vw;
+  z-index: 1000;
+  gap: 15px;
+  animation: slideIn 0.5s ease-out;
+}
+
+.snackbar-message {
+  margin: 0;
+  font-size: 0.9rem;
+  flex-grow: 1;
+}
+
+.snackbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.action-button {
+  background: none;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+.dismiss-button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0 5px;
+  line-height: 1;
+  transition: color 0.2s;
+  
+  &:hover {
+    color: #ccc;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .snackbar-container {
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    min-width: auto;
+    flex-wrap: wrap; 
+  }
+
+  .snackbar-actions {
+    width: 100%;
+    justify-content: flex-end; 
+  }
+  
+  .action-button {
+    flex-grow: 1;
+  }
+}

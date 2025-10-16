@@ -1,0 +1,134 @@
+.task-list-section {
+    padding: 20px 0;
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.empty-list-message {
+    font-style: italic;
+    color: #6c757d;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    position: relative;
+
+    &.cdk-drag-preview {
+        box-sizing: border-box;
+        border-radius: 4px;
+        box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+    }
+
+    &.cdk-drag-placeholder {
+        opacity: 0;
+    }
+
+    &:hover {
+        background-color: #f7f7f7;
+
+        .delete-button {
+            opacity: 1;
+        }
+    }
+
+    &.done {
+        background-color: #f1f8e9;
+
+        .task-text {
+            text-decoration: line-through;
+            color: #9e9e9e;
+        }
+    }
+}
+
+.drag-handle {
+    cursor: grab;
+    padding-right: 15px;
+    color: #9e9e9e;
+    height: 24px;
+    width: 24px;
+
+    svg {
+        display: block;
+    }
+
+    &:active {
+        cursor: grabbing;
+    }
+}
+
+.task-label {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    cursor: pointer;
+    padding-right: 10px;
+}
+
+.task-checkbox {
+    margin-right: 15px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.task-text {
+    font-size: 1rem;
+    word-break: break-word;
+}
+
+.delete-button {
+    background: none;
+    border: none;
+    color: #f44336;
+    cursor: pointer;
+    padding: 5px;
+    opacity: 0;
+    transition: opacity 0.3s ease, color 0.3s ease;
+    height: 24px;
+    width: 24px;
+
+    &:hover {
+        color: #d32f2f;
+    }
+}
+
+@media (max-width: 600px) {
+    .task-item {
+        padding: 10px;
+
+        .delete-button {
+            opacity: 1;
+        }
+    }
+
+    .drag-handle {
+        padding-right: 10px;
+    }
+
+    .task-checkbox {
+        margin-right: 10px;
+    }
+}

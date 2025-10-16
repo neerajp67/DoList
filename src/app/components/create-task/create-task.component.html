@@ -1,1 +1,25 @@
-<p>create-task works!</p>
+<form class="task-form" aria-label="Create new task form">
+  <div class="input-container">
+    @if (taskControl.invalid && taskControl.dirty) {
+    <div id="task-text-error" class="validation-message" role="alert">
+      @if (taskControl.errors?.['required']) {
+      <p>task text is required.</p>
+      }
+      @if (taskControl.errors?.['maxlength']) {
+      <p>Text cannot exceed 100 characters.</p>
+      }
+    </div>
+    }
+    <div class="input-group">
+      <label for="new-task-text" class="visually-hidden">New Task Text</label>
+      <input type="text" id="new-task-text" [formControl]="taskControl" placeholder="What needs to be done?"
+        class="task-input" [class.is-invalid]="taskControl.invalid && taskControl.dirty"
+        aria-describedby="task-text-error" />
+
+      <button type="submit" (click)="createTask($event)" [disabled]="!taskControl.valid" class="add-button"
+        aria-label="Add new task">
+        Add Task
+      </button>
+    </div>
+  </div>
+</form>

@@ -1,1 +1,12 @@
-<p>scroll-to-top works!</p>
+@if (showScrollButton()) {
+  <button 
+    (click)="scrollToTop()" 
+    class="scroll-button" 
+    aria-label="Scroll to top of the page"
+  >
+    <svg viewBox="0 0 24 24" fill="currentColor" width="24px" height="24px">
+      <path d="M0 0h24v24H0z" fill="none"/>
+      <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+    </svg>
+  </button>
+}

@@ -1,1 +1,29 @@
-<p>snackbar works!</p>
+@if (message()) {
+  <section 
+    class="snackbar-container" 
+    role="alert" 
+    aria-live="polite" 
+    [attr.aria-label]="message()!.message"
+  >
+    <p class="snackbar-message">
+      {{ message()!.message }}
+    </p>
+
+    <div class="snackbar-actions">
+      <button 
+        (click)="handleAction()" 
+        class="action-button"
+      >
+        {{ message()!.actionLabel }}
+      </button>
+
+      <button 
+        (click)="dismiss()" 
+        class="dismiss-button" 
+        aria-label="Dismiss notification"
+      >
+        &times;
+      </button>
+    </div>
+  </section>
+}
