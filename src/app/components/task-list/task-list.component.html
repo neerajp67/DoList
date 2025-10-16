@@ -1,1 +1,48 @@
-<p>task-list works!</p>
+<section class="task-list-section">
+  <h2>Your Tasks</h2>
+
+  @if (tasks().length === 0) {
+  <p class="empty-list-message" role="status">
+    You have no tasks! Start by adding a new task above.
+  </p>
+  } @else {
+  <ul cdkDropList [cdkDropListData]="tasks()" 
+    (cdkDropListDropped)="handleDrop($event)" 
+    class="task-list"
+    aria-label="List of to-do items, reorderable by drag and drop">
+    @for (task of tasks(); track task.id) {
+    <li cdkDrag 
+      class="task-item" 
+      [class.done]="task.done"
+      role="listitem"
+      [title]="`Created on: ${task.id | date}`">
+      <div class="drag-handle" cdkDragHandle aria-label="Drag to reorder">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="24px" height="24px">
+          <path d="M0 0h24v24H0z" fill="none" />
+          <path d="M3 15h18v-2H3v2zm0 4h18v-2H3v2zm0-8h18V9H3v2zm0-6v2h18V5H3z" />
+        </svg>
+      </div>
+
+      <label class="task-label">
+        <input type="checkbox" 
+          [checked]="task.done" 
+          (change)="handleToggle(task.id)" 
+          class="task-checkbox"
+          [attr.aria-label]="'Mark ' + task.text + ' as done'" />
+        <span class="task-text">{{ task.text }}</span>
+      </label>
+
+      <button (click)="handleDelete(task.id)" 
+        class="delete-button" 
+        aria-label="Delete this task">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="24px" height="24px">
+          <path d="M0 0h24v24H0z" fill="none" />
+          <path
+            d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+        </svg>
+      </button>
+    </li>
+    }
+  </ul>
+  }
+</section>

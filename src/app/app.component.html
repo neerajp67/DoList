@@ -1,1 +1,15 @@
-<h1>DO LIST</h1>
+<div class="app-container">
+  <header role="banner" class="app-header">
+    <h1>{{ title }}</h1>
+  </header>
+
+  <main role="main" class="main-content">
+    <section class="task-manager">
+      <app-create-task></app-create-task>
+      <app-task-list></app-task-list>
+    </section>
+  </main>
+
+  <app-snackbar></app-snackbar>
+  <app-scroll-to-top></app-scroll-to-top>
+</div>

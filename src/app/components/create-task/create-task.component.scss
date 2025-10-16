@@ -1,0 +1,86 @@
+.input-container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0;
+  width: 100%;
+}
+
+.input-group {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.task-input {
+  flex-grow: 1;
+  padding: 12px 15px;
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  appearance: none;
+
+  &:focus {
+    border-color: #3f51b5;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(63, 81, 181, 0.2);
+  }
+
+  &.is-invalid {
+    border-color: #f44336;
+  }
+}
+
+.add-button {
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  background-color: #3f51b5;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+
+  &:hover:not(:disabled) {
+    background-color: #303f9f;
+  }
+
+  &:disabled {
+    background-color: #b0bec5;
+    cursor: not-allowed;
+  }
+}
+
+.validation-message {
+  color: #f44336;
+  font-size: 14px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+
+  p {
+    margin: 0;
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+@media (max-width: 600px) {
+  .input-group {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .add-button {
+    width: 100%;
+  }
+}
